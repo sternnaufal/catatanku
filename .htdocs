@@ -1,0 +1,5 @@
+# .htaccess
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(config|includes|vendor)/ - [F,L,NC]
+</IfModule>
