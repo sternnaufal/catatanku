@@ -106,9 +106,9 @@ tinymce.init({
   <div class="container d-flex justify-content-between align-items-center">
     <h1 class="logo m-0 fw-bold text-primary">📝 Catatan Kuliah</h1>
     <nav class="nav-links">
+        <a href='https://naufalrakha.my.id/' class="nav-item">Root</a>
       <?php if (isset($_SESSION['user_id'])): ?>
         <a href='<?= BASE_URL ?>public/index.php' class="nav-item">Beranda</a>
-        <a href='<?= BASE_URL ?>public/profile.php' class="nav-item">Profil</a>
         <a href='<?= BASE_URL ?>public/logout.php' class="nav-item">Logout</a>
       <?php else: ?>
         <a href='<?= BASE_URL ?>public/login.php' class="nav-item">Login</a>

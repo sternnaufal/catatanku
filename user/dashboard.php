@@ -21,7 +21,7 @@ if (!empty($search)) {
     $params[] = "%$search%";
 }
 
-$sql .= " ORDER BY notes.is_pinned DESC, notes.created_at DESC";
+$sql .= " ORDER BY notes.created_at DESC";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
@@ -60,17 +60,12 @@ $notes = $stmt->fetchAll();
                         <p class="card-text"><?= nl2br(htmlspecialchars($content_preview)) ?></p>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
-    <a href="../public/view_note.php?id=<?= $note['id'] ?>" class="btn btn-sm btn-outline-info">👁️ Lihat</a>
-    <div>
-        <?php if ($note['is_pinned']): ?>
-            <a href="pin_note.php?id=<?= $note['id'] ?>&action=unpin" class="btn btn-sm btn-warning me-1">📌 Unpin</a>
-        <?php else: ?>
-            <a href="pin_note.php?id=<?= $note['id'] ?>&action=pin" class="btn btn-sm btn-success me-1">📌 Pin</a>
-        <?php endif; ?>
-        <a href="edit_note.php?id=<?= $note['id'] ?>" class="btn btn-sm btn-outline-warning me-1">✏️ Edit</a>
-        <a href="delete_note.php?id=<?= $note['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin ingin menghapus catatan ini?')">🗑️</a>
-    </div>
-</div>
+                        <a href="../public/view_note.php?id=<?= $note['id'] ?>" class="btn btn-sm btn-outline-info">👁️ Lihat</a>
+                        <div>
+                            <a href="edit_note.php?id=<?= $note['id'] ?>" class="btn btn-sm btn-outline-warning me-1">✏️ Edit</a>
+                            <a href="delete_note.php?id=<?= $note['id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Yakin ingin menghapus catatan ini?')">🗑️</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         <?php endforeach ?>
